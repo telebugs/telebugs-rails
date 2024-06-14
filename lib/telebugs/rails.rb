@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "telebugs"
+
 require_relative "rails/version"
 
 module Telebugs
