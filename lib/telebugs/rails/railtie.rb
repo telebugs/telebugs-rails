@@ -13,6 +13,7 @@ module Telebugs::Rails
 
     initializer "telebugs.configure" do
       Telebugs.configure do |c|
+        c.root_directory = Rails.root.to_s
         c.middleware.use Middleware::IgnoreDevEnvMiddleware.new(Rails.env)
       end
     end
