@@ -6,14 +6,9 @@ class Telebugs::Rails::TestRailtie < Minitest::Test
   def setup
     @stub = stub_request(:post, Telebugs.config.api_url)
       .to_return(status: 201, body: "{}")
-    @env = Rails.env
   end
 
   def teardown
-    Rails.env = @env
-    Telebugs.config.middleware.delete Telebugs::Rails::Middleware::IgnoreDevEnvMiddleware
-    Telebugs.config.middleware.use Telebugs::Rails::Middleware::IgnoreDevEnvMiddleware.new(Rails.env)
-
     WebMock.reset!
   end
 
@@ -35,6 +30,7 @@ class Telebugs::Rails::TestRailtie < Minitest::Test
   def test_error_subscriber_respects_the_ignore_dev_middleware
     skip("Rails 7.0 and later only") unless Rails.version.to_f >= 7.0
 
+    env = Rails.env
     Rails.env = "development"
     Telebugs.config.middleware.delete Telebugs::Rails::Middleware::IgnoreDevEnvMiddleware
     Telebugs.config.middleware.use Telebugs::Rails::Middleware::IgnoreDevEnvMiddleware.new(Rails.env)
@@ -48,6 +44,17 @@ class Telebugs::Rails::TestRailtie < Minitest::Test
     # Wait for the subscriber to process the error since it's async.
     sleep 0.01
 
+    Rails.env = env
+    Telebugs.config.middleware.delete Telebugs::Rails::Middleware::IgnoreDevEnvMiddleware
+    Telebugs.config.middleware.use Telebugs::Rails::Middleware::IgnoreDevEnvMiddleware.new(Rails.env)
+
     refute_requested @stub
+  end
+
+  def test_report_errors_middleware_inserted_after_debug_exceptions
+    middlewares = Rails.configuration.middleware.middlewares.map(&:inspect)
+    own_idx = middlewares.index("Telebugs::Rails::ReportErrors")
+
+    assert_equal "ActionDispatch::DebugExceptions", middlewares[own_idx - 1]
   end
 end

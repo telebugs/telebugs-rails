@@ -2,6 +2,10 @@
 
 module Telebugs::Rails
   class Railtie < ::Rails::Railtie
+    initializer "telebugs.rack_middleware" do |app|
+      app.config.middleware.insert_after ActionDispatch::DebugExceptions, Telebugs::Rails::ReportErrors
+    end
+
     # https://guides.rubyonrails.org/error_reporting.html
     initializer "telebugs.error_subscribe" do
       # Error reporting is only available in Rails 7.0 and later.
