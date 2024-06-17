@@ -8,7 +8,7 @@ require "webmock/minitest"
 
 puts "Rails/#{Rails.version}"
 
-ENV["RAILS_ENV"] = "test"
+ENV["RAILS_ENV"] = "production"
 
 class TestApp < Rails::Application
   config.eager_load = false
