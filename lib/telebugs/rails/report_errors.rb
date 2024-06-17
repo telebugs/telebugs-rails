@@ -13,16 +13,18 @@ module Telebugs::Rails
     end
 
     def call!(env)
-      call_app(env)
+      response = call_app(env)
 
       # The exceptions app should be passed as a parameter on initialization of
       # ShowExceptions. Every time there is an exception, ShowExceptions will
       # store the exception in env["action_dispatch.exception"], rewrite the
       # PATH_INFO to the exception status code, and call the Rack app.
       # See: https://api.rubyonrails.org/classes/ActionDispatch/ShowExceptions.html
-      return unless env["action_dispatch.exception"]
+      return response unless env["action_dispatch.exception"]
 
       Telebugs.report(env["action_dispatch.exception"])
+
+      response
     end
 
     private
