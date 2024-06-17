@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class Telebugs::TestErrorSubscriber < Minitest::Test
+class Telebugs::Rails::TestErrorSubscriber < Minitest::Test
   def setup
     @stub = stub_request(:post, Telebugs.config.api_url)
       .to_return(status: 201, body: "{}")
@@ -13,20 +13,17 @@ class Telebugs::TestErrorSubscriber < Minitest::Test
   end
 
   def test_error_subscriber_subscribes_to_rails_error
-    skip("Rails 7.0 and later only") unless Rails.version.to_f >= 7.0
+    skip "Rails 7.0 and later only" unless Rails.version.to_f >= 7.0
 
-    stub = stub_request(:post, Telebugs.config.api_url)
-      .to_return(status: 201, body: "{}")
+    error_subscriber = Telebugs::Rails::ErrorSubscriber.new
+    p = error_subscriber.report(
+      RuntimeError.new("test error"),
+      handled: true,
+      severity: "error",
+      context: {foo: "bar"}
+    )
+    p.wait
 
-    if Rails.version.to_f == 7.0 # rubocop:disable Lint/FloatComparison
-      Rails.error.report(RuntimeError.new("test railstie"), handled: true)
-    else
-      Rails.error.report(RuntimeError.new("test railstie"))
-    end
-
-    # Wait for the subscriber to process the error since it's async.
-    sleep 0.01
-
-    assert_requested stub
+    assert_requested @stub
   end
 end
