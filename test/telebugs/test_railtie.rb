@@ -32,8 +32,8 @@ class Telebugs::Rails::TestRailtie < Minitest::Test
 
     env = Rails.env
     Rails.env = "development"
-    Telebugs.config.middleware.delete Telebugs::Rails::Middleware::IgnoreDevEnvMiddleware
-    Telebugs.config.middleware.use Telebugs::Rails::Middleware::IgnoreDevEnvMiddleware.new(Rails.env)
+    Telebugs.config.middleware.delete Telebugs::Rails::Middleware::IgnoreDevEnv
+    Telebugs.config.middleware.use Telebugs::Rails::Middleware::IgnoreDevEnv.new(Rails.env)
 
     if Rails.version.to_f == 7.0 # rubocop:disable Lint/FloatComparison
       Rails.error.report(RuntimeError.new("test ignore env"), handled: true)
@@ -45,8 +45,8 @@ class Telebugs::Rails::TestRailtie < Minitest::Test
     sleep 0.01
 
     Rails.env = env
-    Telebugs.config.middleware.delete Telebugs::Rails::Middleware::IgnoreDevEnvMiddleware
-    Telebugs.config.middleware.use Telebugs::Rails::Middleware::IgnoreDevEnvMiddleware.new(Rails.env)
+    Telebugs.config.middleware.delete Telebugs::Rails::Middleware::IgnoreDevEnv
+    Telebugs.config.middleware.use Telebugs::Rails::Middleware::IgnoreDevEnv.new(Rails.env)
 
     refute_requested @stub
   end

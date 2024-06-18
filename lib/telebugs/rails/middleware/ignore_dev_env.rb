@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Telebugs::Rails::Middleware
-  class IgnoreDevEnvMiddleware < Telebugs::Middleware
+  class IgnoreDevEnv < Telebugs::Middleware
     def initialize(rails_env)
       @rails_env = rails_env.to_s
     end
