@@ -1,24 +1,33 @@
-# Telebugs::Rails
+# Telebugs for Rails
 
-TODO: Delete this and the text below, and describe your gem
+Simple error monitoring for developers. Monitor production errors in real-time
+and get them reported to Telegram with Telebugs.
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/telebugs/rails`. To experiment with that code, run `bin/console` for an interactive prompt.
+- [FAQ](https://telebugs.com/faq)
+- [Telebugs News](https://t.me/TelebugsNews)
+- [Telebugs Community](https://t.me/TelebugsCommunity)
+
+## Introduction
+
+Any Ruby on Rails application can be integrated with
+[Telebugs](https://telebugs.com) using the `telebugs-rails` gem. The gem is
+designed to be simple and easy to use. It integrates the `telebugs` gem with
+Rails application, so that any unhandled error occurring in your app will be
+reported to Telebugs.
 
 ## Installation
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
+For the integration details, please refer to the
+[Telebugs documentation](https://telebugs.com/new/docs/integrations/rails).
 
-Install the gem and add to the application's Gemfile by executing:
+## Rails support policy
 
-    $ bundle add UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+Telebugs for Rails supports the following Rails versions:
 
-If bundler is not being used to manage dependencies, install the gem by executing:
+- Rails 6.1+
 
-    $ gem install UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
-
-## Usage
-
-TODO: Write usage instructions here
+If you need support older Rails versions, please contact us at
+[help@telebugs.com](mailto:help@telebugs.com).
 
 ## Development
 
