@@ -13,8 +13,8 @@ class TelebugsGenerator < Rails::Generators::Base
       # Telebugs library guide:
       # https://telebugs.com/docs/integrations/ruby
 
-      Telebugs.configure do |c|
-        c.api_key = ENV["TELEBUGS_API_KEY"] || Rails.application.credentials.telebugs_api_key
+      Telebugs.configure do |config|
+        config.api_key = ENV["TELEBUGS_API_KEY"] || Rails.application.credentials.telebugs_api_key
       end
     RUBY
   end
