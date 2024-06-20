@@ -21,5 +21,11 @@ module Telebugs::Rails
         c.middleware.use Middleware::IgnoreDevEnv.new(Rails.env)
       end
     end
+
+    runner do
+      at_exit do
+        Telebugs.report($!).wait if $!
+      end
+    end
   end
 end
