@@ -4,7 +4,7 @@ class TelebugsGenerator < Rails::Generators::Base
   def create_initializer_file
     create_file "config/initializers/telebugs.rb", <<~RUBY
       # frozen_string_literal: true
-      #
+
       # Telebugs error monitoring.
       #
       # Rails integration guide:
