@@ -57,4 +57,11 @@ class Telebugs::Rails::TestRailtie < Minitest::Test
 
     assert_equal "ActionDispatch::DebugExceptions", middlewares[own_idx - 1]
   end
+
+  def test_telebugs_is_configured_with_correct_middlewares
+    middlewares = Telebugs.config.middleware.middlewares.map(&:class)
+
+    assert_includes middlewares, Telebugs::Rails::Middleware::IgnoreDevEnv
+    assert_includes middlewares, Telebugs::Rails::Middleware::ReporterInfo
+  end
 end
