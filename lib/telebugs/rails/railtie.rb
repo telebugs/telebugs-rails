@@ -19,6 +19,7 @@ module Telebugs::Rails
       Telebugs.configure do |c|
         c.root_directory = Rails.root.to_s
         c.middleware.use Middleware::IgnoreDevEnv.new(Rails.env)
+        c.middleware.use Middleware::ReporterInfo.new
       end
     end
 
