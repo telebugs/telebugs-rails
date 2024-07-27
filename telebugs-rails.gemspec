@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.summary = "Report errors to Telebugs from Rails applications."
   spec.description = <<~DESC
     Telebugs Rails is an integration for Rails applications with Telebugs.
-    Telebugs is a simple error monitoring tool for developers. With  Telebugs,
+    Telebugs is a simple error monitoring tool for developers. With Telebugs,
     you can track production errors in real-time and report them to Telegram.
   DESC
   spec.homepage = "https://telebugs.com"
