@@ -1,5 +1,7 @@
 # Telebugs for Rails
 
+[![Gem Version](https://badge.fury.io/rb/telebugs-rails.svg)](https://badge.fury.io/rb/telebugs-rails)
+
 Simple error monitoring for developers. Monitor production errors in real-time
 and get them reported to Telegram with Telebugs.
 
@@ -11,10 +13,9 @@ and get them reported to Telegram with Telebugs.
 ## Introduction
 
 Any Ruby on Rails application can be integrated with
-[Telebugs](https://telebugs.com) using the `telebugs-rails` gem. The gem is
-designed to be simple and easy to use. It integrates the `telebugs` gem with
-Rails application, so that any unhandled error occurring in your app will be
-reported to Telebugs.
+[Telebugs](https://telebugs.com) using the [`telebugs-rails`](https://rubygems.org/gems/telebugs-rails) gem. The gem is designed to be simple and easy to use. It integrates the
+[`telebugs`](https://rubygems.org/gems/telebugs) gem with Rails applications,
+so that any unhandled error occurring in your app will be reported to Telebugs.
 
 ## Installation
 
@@ -38,4 +39,4 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/kyrylo/telebugs-rails.
+Bug reports and pull requests are welcome on GitHub at https://github.com/telebugs/telebugs-rails.
