@@ -3,6 +3,7 @@
 Simple error monitoring for developers. Monitor production errors in real-time
 and get them reported to Telegram with Telebugs.
 
+- [Official Documentation](https://telebugs.com/docs/integrations/rails)
 - [FAQ](https://telebugs.com/faq)
 - [Telebugs News](https://t.me/TelebugsNews)
 - [Telebugs Community](https://t.me/TelebugsCommunity)
@@ -18,7 +19,7 @@ reported to Telebugs.
 ## Installation
 
 For the integration details, please refer to the
-[Telebugs documentation](https://telebugs.com/new/docs/integrations/rails).
+[Telebugs documentation](https://telebugs.com/docs/integrations/rails).
 
 ## Rails support policy
 
