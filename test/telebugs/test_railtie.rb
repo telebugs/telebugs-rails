@@ -32,8 +32,8 @@ class Telebugs::Rails::TestRailtie < Minitest::Test
 
     env = Rails.env
     Rails.env = "development"
-    Telebugs.config.middleware.delete Telebugs::Rails::Middleware::IgnoreDevEnv
-    Telebugs.config.middleware.use Telebugs::Rails::Middleware::IgnoreDevEnv.new(Rails.env)
+    Telebugs.config.middleware.delete Telebugs::Rails::Middleware::IgnoreDevelopmentErrors
+    Telebugs.config.middleware.use Telebugs::Rails::Middleware::IgnoreDevelopmentErrors.new(Rails.env)
 
     if Rails.version.to_f == 7.0 # rubocop:disable Lint/FloatComparison
       Rails.error.report(RuntimeError.new("test ignore env"), handled: true)
@@ -45,8 +45,8 @@ class Telebugs::Rails::TestRailtie < Minitest::Test
     sleep 0.01
 
     Rails.env = env
-    Telebugs.config.middleware.delete Telebugs::Rails::Middleware::IgnoreDevEnv
-    Telebugs.config.middleware.use Telebugs::Rails::Middleware::IgnoreDevEnv.new(Rails.env)
+    Telebugs.config.middleware.delete Telebugs::Rails::Middleware::IgnoreDevelopmentErrors
+    Telebugs.config.middleware.use Telebugs::Rails::Middleware::IgnoreDevelopmentErrors.new(Rails.env)
 
     refute_requested @stub
   end
@@ -61,7 +61,7 @@ class Telebugs::Rails::TestRailtie < Minitest::Test
   def test_telebugs_is_configured_with_correct_middlewares
     middlewares = Telebugs.config.middleware.middlewares.map(&:class)
 
-    assert_includes middlewares, Telebugs::Rails::Middleware::IgnoreDevEnv
+    assert_includes middlewares, Telebugs::Rails::Middleware::IgnoreDevelopmentErrors
     assert_includes middlewares, Telebugs::Rails::Middleware::ReporterInfo
   end
 end

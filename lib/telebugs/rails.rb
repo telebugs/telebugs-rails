@@ -6,7 +6,7 @@ require "telebugs"
 require_relative "rails/version"
 require_relative "rails/railtie"
 
-require_relative "rails/middleware/ignore_dev_env"
+require_relative "rails/middleware/ignore_development_errors"
 require_relative "rails/middleware/reporter_info"
 require_relative "rails/report_errors"
 
