@@ -2,8 +2,8 @@
 
 [![Gem Version](https://badge.fury.io/rb/telebugs-rails.svg)](https://badge.fury.io/rb/telebugs-rails)
 
-Simple error monitoring for developers. Monitor production errors in real-time
-and get them reported to Telegram with Telebugs.
+Refreshingly simple error monitoring. Catch production errors automatically and
+instantly report them to Telegram.
 
 - [Official Documentation](https://telebugs.com/docs/integrations/rails)
 - [FAQ](https://telebugs.com/faq)
